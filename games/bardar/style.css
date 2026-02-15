@@ -1,0 +1,233 @@
+/* ===========================
+   BarDar Page Theme - Pixel Retro
+=========================== */
+
+/* --- Colors --- */
+:root {
+  --bg-dark: rgb(28, 30, 36) !important;
+  --bg-base: rgb(45, 48, 58) !important;
+  --accent-blue: rgb(95, 180, 255) !important;
+  --accent-gold: rgb(255, 200, 50) !important;
+  --text-main: rgb(240, 240, 240) !important;
+  --text-hint: rgb(160, 160, 170) !important;
+  --border-color: rgb(95, 180, 255) !important;
+  --panel-bg: rgba(45, 48, 58, 0.7) !important;
+}
+
+/* --- Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-main) !important;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  image-rendering: pixelated;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  width: 100%;
+  background: var(--bg-base);
+  color: var(--text-main);
+  border-bottom: 2px solid var(--border);
+  text-align: center;
+  padding: 12px 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 0 0 10px var(--accent);
+  box-shadow: 0 0 10px rgba(100,180,255,0.4) inset;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background: var(--bg-base);
+  color: var(--text-hint);
+  border-top: 2px solid var(--border);
+  text-align: center;
+  padding: 8px 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+  box-shadow: 0 0 6px rgba(100,180,255,0.3) inset;
+}
+
+/* --- Headers --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--accent-blue);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 0 0 10px rgba(95, 180, 255,0.6);
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+}
+
+small {
+  font-size: 16px;
+}
+
+time {
+  font-size: 18px;
+}
+
+/* --- Paragraphs --- */
+p {
+  font-size: 20px;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+/* --- Links --- */
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-blue);
+  text-shadow: 0 0 8px var(--accent-blue);
+}
+
+/* --- Buttons --- */
+button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 10px 16px;
+  color: var(--text-main);
+  background: var(--bg-base);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: var(--accent-blue);
+  color: var(--bg-base);
+  box-shadow: 0 0 16px var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px var(--accent-blue);
+}
+
+/* --- Panels / Boxes --- */
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  margin: 12px 0;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+}
+
+/* --- Code / Preformatted Text --- */
+pre, code {
+  background: rgb(40, 44, 52);
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
+  color: var(--accent-gold);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  image-rendering: pixelated;
+  display: inline-block;
+}
+
+/* --- Lists --- */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+/* --- Table Styling --- */
+table {
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: left;
+  font-family: 'Press Start 2P', monospace;
+}
+
+th {
+  background: var(--bg-base);
+  color: var(--accent-blue);
+}
+
+td {
+  background: var(--panel-bg);
+}
+
+/* --- Hover Glow Effects --- */
+.panel:hover, button:hover, a:hover {
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 2px var(--accent-blue); }
+  100% { box-shadow: 0 0 10px var(--accent-blue); }
+}
+
+/* --- Sections --- */
+section {
+  background: var(--panel-bg);
+  border: 2px solid var(--border-color);
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 0 8px rgba(95, 180, 255, 0.5), inset 0 0 4px rgba(0,0,0,0.5);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+section:hover {
+  box-shadow: 
+    0 0 16px rgba(95, 180, 255, 0.8),
+    inset 0 0 6px rgba(0,0,0,0.7);
+}
+
+section h2 {
+  color: var(--accent-blue);
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+}
+
+section p {
+  font-size: 20px;
+  color: var(--text-main) !important;
+  margin-bottom: 8px;
+}
+
+section a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+}
+
+section a:hover {
+  color: var(--accent-blue);
+  text-shadow: 0 0 6px var(--accent-blue);
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- inject-universal-head -->
+  <title>IdiotStudios — Projects</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    #search {
+      padding: 10px;
+      margin: 20px 0;
+      font-size: 16px;
+      right: 1rem;
+    }
+    #results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      right: 1rem;
+      text-align: center;
+    }
+    .project {
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .project a {
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header-section">
+    <nav class="header-section__nav container">
+      <a href="/" class="header-section__logo">IdiotStudios <small class="header-section__tagline">a few too many Monsters later… ✨</small></a>
+
+      <button class="header-section__toggle" aria-label="Toggle menu">
+        ☰
+      </button>
+
+      <div class="header-section__links">
+        <a href="/" class="header-section__btn">Home</a>
+        <a href="/i/terms/" class="header-section__btn">Terms</a>
+        <a href="/i/about-us/" class="header-section__btn">About Us</a>
+        <a href="/i/contact/" class="header-section__btn">Contact</a>
+        <a href="/i/pricing/" class="header-section__btn">Pricing</a>
+        <a href="https://docs.idiotstudios.co.za/" class="header-section__btn">Docs</a>
+      </div>
+    </nav>
+  </header>
+
+  <!--<section id=search class="section">
+    <input type="text" placeholder="Search projects...">
+    <div id="results"></div>
+  </section>-->
+
+  <main class="container hero">
+    <h1>Our Projects Page</h1>
+  </main>
+  <section id="featured" class="container section fade-in-up delay-1">
+    <h2>Featured - Projects</h2>
+    <section id="biwi">
+      <h3>BiWi (Binary Wire)</h3>
+      <p>BiWi is a binary protocol designed for efficient and secure data transmission. It is an alternative to JSON and Protobuf. It uses UDP and has minimal packet loss</p>
+      <a href="https://github.com/IdiotStudios/BinaryWire" class="btn">Check it out on Github!</a>
+    </section> <br>
+    <section id="conam">
+      <h3>Conam</h3>
+      <p>Conam is a fast and secure messaging system that allows you to make temporary chats and calls to communicate with anyone from anywhere in the world. From your old Nokia to your Pc, we have got you covered!</p> <br>
+      <a href="/conam" class="btn">Modern View (HTTPS)</a>
+      <a href="http://conam.idiotstudios.co.za" class="btn">Legacy View (Http)</a>
+    </section> <br>
+    <section id="ntp">
+      <h3>NTP Server</h3>
+      <p>Our very own Network Time Protocol (NTP) server, running Stratum 2 with 24/7 uptime. <br> Hostname: ntp.idiotstudios.co.za</p> <br>
+    </section>
+  </section>
+
+  <section id="wip" class="container section fade-in-up delay-1">
+    <h2>Work In Progress - Projects</h2>
+    <section id="docs">
+      <h3>Docs - Not up to date</h3><p>We are currently working on a documentation system for our projects.</p>
+    </section>
+    <!--<section id="none"><h3>None In Progress Right Now</h3><p>See Below on how to contact us if you have any ideas...</p></section> -->
+  </section>
+
+  <section id="contact" class="container section fade-in-up delay-2">
+    <h2>Get in Touch</h2>
+    <p>Have a project in mind? Let's talk about how we can help you achieve your goals.</p>
+    <a href="/i/contact" class="btn">Contact Us</a>
+  </section>
+
+  <section id="main" class="container section">
+    <section id="mpkg">
+      <h3>Mpkg</h3>
+      <p>Mpkg is a fast alternative to npm. It is built in rust and includes an npm wrapper as well as a nodejs wrapper. It allows access to our custom Mpkg Registry as well as the normal npm registry.</p> <br>
+      <a href="https://github.com/idiotstudios/mpkg" class="btn">Check it out on Github!</a>
+    </section>
+  </section>
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <span class="footer-logo">IdiotStudios</span>
+        <small class="footer-tagline">made with questionable decisions ♡</small>
+      </div>
+
+      <div class="social-links small-cute-icons">
+        <a href="https://discord.gg/HDc8SCt8qn" target="_blank"><img src="/icons/discord.png" alt="Discord" width="30"></a>
+        <a href="mailto:contact@idiotstudios.co.za"><img src="/icons/email.png" alt="Email" width="30"></a>
+        <a href="https://github.com/IdiotStudios"><img src="/icons/github-mark.svg" alt="GitHub" width="30"></a>
+      </div>
+
+      <small class="footer-note">&copy; 2026 IdiotStudios. All rights reserved</small>
+    </div>
+  </footer>
+
+<script>
+async function loadProjects() {
+  const res = await fetch("/api/projects");
+  const projects = await res.json();
+  return projects;
+}
+
+function renderProjects(projects) {
+  const results = document.getElementById("results");
+  results.innerHTML = "";
+  projects.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "project";
+    div.innerHTML = `<a href="/p/${p}">${p}</a>`;
+    results.appendChild(div);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  let allProjects = await loadProjects();
+  renderProjects(allProjects);
+
+  document.getElementById("search").addEventListener("input", e => {
+    const val = e.target.value.toLowerCase();
+    const filtered = allProjects.filter(p => p.toLowerCase().includes(val));
+    renderProjects(filtered);
+  });
+});
+</script>
+  <script src="/script.js"></script>
+</body>
+</html>
